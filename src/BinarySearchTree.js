@@ -5,36 +5,36 @@ class BinarySearchTree {
     this.right = null;
   }
 
-  insert_node(val) {
+  insertNode(val) {
     if(val <= this.val && this.left) {
-      this.left.insert_node(val);
+      this.left.insertNode(val);
     } else if (val <= this.val) {
       this.left = new BinarySearchTree(val);
     } else if (val > this.val && this.right) {
-      this.right.insert_node(val);
+      this.right.insertNode(val);
     } else {
       this.right = new BinarySearchTree(val);
     }
   }
 
-  find_node(val) {
+  findNode(val) {
     if(val < this.val && this.left) {
-      return this.left.find_node(val);
+      return this.left.findNode(val);
     } else if (val > this.val && this.right){
-      return this.right.find_node(val);
+      return this.right.findNode(val);
     }
     return val == this.val;
   }
 
-  remove_node(val, parent) {
+  removeNode(val, parent) {
     // first check if value if leaf node
     if(val < this.val && this.left) {
-      return this.left.remove_node(val, this);
+      return this.left.removeNode(val, this);
     } else if (val < this.val) {
       // value does not exist
       return false;
     } else if (val > this.val && this.right) {
-      return this.right.remove_node(val, this);
+      return this.right.removeNode(val, this);
     } else if (val > this.val) {
       // value does not exist
       return false;
@@ -52,26 +52,26 @@ class BinarySearchTree {
       } else if(this.right && !this.left && this == parent.right) {
         parent.right = this.right;
       } else {
-        this.value = this.right.find_minimum();
-        this.right.remove_node(this.val, this);
+        this.value = this.right.findMinimum();
+        this.right.removeNode(this.val, this);
       }
 
     return true;
     }
   }
 
-  find_minimum() {
+  findMinimum() {
     if(this.left) {
-      return this.left.find_minimum();
+      return this.left.findMinimum();
     } else {
       return this.value;
     }
   }
 
-  pre_order() {
+  preOrder() {
     console.log(this.val);
-    if(this.left) this.left.pre_order();
-    if(this.right) this.right.pre_order();
+    if(this.left) this.left.preOrder();
+    if(this.right) this.right.preOrder();
   }
 }
 

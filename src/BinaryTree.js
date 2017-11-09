@@ -7,44 +7,44 @@ import Queue from './Queue';
     this.right = null;
   }
 
-  insert_left(val) {
+  insertLeft(val) {
     if (!this.left) {
       this.left = new BinaryTree(val);
     } else {
-      let new_left = new BinaryTree(val);
-      new_left.left = this.left;
-      this.left = new_left;
+      let newLeft = new BinaryTree(val);
+      newLeft.left = this.left;
+      this.left = newLeft;
     }
   }
 
-  insert_right(val) {
+  insertRight(val) {
     if (!this.right) {
       this.right = new BinaryTree(val);
     } else {
-      let new_right = new BinaryTree(val);
-      new_right.right = this.right;
-      this.right = new_right;
+      let newRight = new BinaryTree(val);
+      newRight.right = this.right;
+      this.right = newRight;
     }
   }
 
   // pre-order Depth First Search
-  pre_order() {
+  preOrder() {
     console.log(this.val);
-    if(this.left) this.left.pre_order();
-    if(this.right) this.right.pre_order();
+    if(this.left) this.left.preOrder();
+    if(this.right) this.right.preOrder();
   }
 
   // In-order Depth First Search
-  in_order() {
-    if(this.left) this.left.in_order();
+  inOrder() {
+    if(this.left) this.left.inOrder();
     console.log(this.val);
-    if(this.right) this.right.in_order();
+    if(this.right) this.right.inOrder();
   }
 
   // Post-order Depth First Search
-  post_order() {
-    if(this.left) this.left.post_order();
-    if(this.right) this.right.post_order();
+  postOrder() {
+    if(this.left) this.left.postOrder();
+    if(this.right) this.right.postOrder();
     console.log(this.val);
   }
 
@@ -53,11 +53,11 @@ import Queue from './Queue';
     this.queue.enqueue(this);
 
     while(this.queue.size() > 0) {
-      const current_node = this.queue.dequeue();
-      console.log(current_node.val);
+      const currentNode = this.queue.dequeue();
+      console.log(currentNode.val);
 
-      if(current_node.left) this.queue.enqueue(current_node.left);
-      if(current_node.right) this.queue.enqueue(current_node.right);
+      if(currentNode.left) this.queue.enqueue(currentNode.left);
+      if(currentNode.right) this.queue.enqueue(currentNode.right);
     }
   }
 }
